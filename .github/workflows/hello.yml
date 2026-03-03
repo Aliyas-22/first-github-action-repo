@@ -1,4 +1,4 @@
-name: hello world
+name: hello
 on:
   push:
     branches:
@@ -7,12 +7,7 @@ jobs:
   greet:
     runs-on: ubuntu-latest
     steps:
-      - name: say hello to users
+      - name: say hello to the users
         run: echo "hello dosto"
-      - name: say hello to username
-        run: echo "hello $user"
-# Detail:
-#   runs-on: ubuntu-latest
-#   steps:
-#     - name: version of python, docker, etc
-#       run: docker --version && python --version
+      - name: say hello to the username
+        run: echo "hello $USER"
