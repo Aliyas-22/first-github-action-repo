@@ -11,8 +11,8 @@ jobs:
         run: echo "hello dosto"
       - name: say hello to the username
         run: echo "hello $USER"
-show-version:
-  runs-on: ubuntu-latest
-  steps:
-    - name: this will show version of software
-    - run: docker --version && python --version
+  show-details:
+   runs-on: ubuntu-latest
+   steps:
+    - name: Show version of software
+      run: docker --version && python --version
