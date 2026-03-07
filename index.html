@@ -4,220 +4,307 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aliya Firdous | DevOps Learner</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Aliya Firdous | DevOps Portfolio</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
         }
 
         body {
-            height: 100vh;
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background: #0b0f19;
             color: white;
             overflow-x: hidden;
         }
 
+        /* Aurora Background */
+
+        .bg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.7;
+            animation: move 18s infinite alternate ease-in-out;
+        }
+
+        .blob1 {
+            background: #00c6ff;
+            top: -100px;
+            left: -100px;
+        }
+
+        .blob2 {
+            background: #7b2cff;
+            bottom: -100px;
+            right: -100px;
+            animation-delay: 4s;
+        }
+
+        .blob3 {
+            background: #ff4ecd;
+            top: 40%;
+            left: 50%;
+            animation-delay: 8s;
+        }
+
+        @keyframes move {
+            0% {
+                transform: translate(0, 0) scale(1)
+            }
+
+            100% {
+                transform: translate(120px, -120px) scale(1.2)
+            }
+        }
+
+        /* Layout */
+
         .container {
-            width: 90%;
             max-width: 1200px;
+            margin: auto;
+            padding: 60px 20px;
         }
 
-        .glass {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 40px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            transition: 0.4s ease;
-        }
+        /* Hero */
 
-        .glass:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-        }
-
-        header {
+        .hero {
             text-align: center;
-            margin-bottom: 40px;
+            margin-top: 80px;
         }
 
-        header h1 {
-            font-size: 40px;
+        .hero h1 {
+            font-size: 56px;
             font-weight: 700;
-            background: linear-gradient(to right, #00c6ff, #0072ff);
+            background: linear-gradient(90deg, #00c6ff, #a855f7, #ff4ecd);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        header p {
-            margin-top: 10px;
+        .hero p {
+            margin-top: 15px;
             font-size: 18px;
             opacity: 0.8;
         }
 
-        .section {
-            margin-bottom: 30px;
-        }
-
-        .section h2 {
-            margin-bottom: 20px;
-            font-size: 22px;
-            border-left: 4px solid #00c6ff;
-            padding-left: 10px;
-        }
-
-        .skills {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-        }
-
-        .skill-card {
-            padding: 15px;
-            text-align: center;
-            border-radius: 15px;
-            background: rgba(255, 255, 255, 0.08);
-            transition: 0.3s ease;
-            cursor: pointer;
-        }
-
-        .skill-card:hover {
-            background: rgba(0, 198, 255, 0.3);
-            transform: scale(1.05);
-        }
-
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .project-card {
-            padding: 20px;
-            border-radius: 15px;
-            background: rgba(255, 255, 255, 0.08);
-            transition: 0.4s ease;
-            cursor: pointer;
-        }
-
-        .project-card:hover {
-            transform: translateY(-8px);
-            background: rgba(0, 114, 255, 0.3);
-        }
-
-        button {
-            margin-top: 20px;
-            padding: 12px 25px;
+        .hero button {
+            margin-top: 35px;
+            padding: 14px 32px;
+            border-radius: 40px;
             border: none;
-            border-radius: 30px;
-            background: linear-gradient(45deg, #00c6ff, #0072ff);
+            background: linear-gradient(90deg, #00c6ff, #a855f7);
             color: white;
             font-weight: 600;
             cursor: pointer;
-            transition: 0.3s ease;
+            transition: 0.3s;
         }
 
-        button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 20px rgba(0, 198, 255, 0.7);
+        .hero button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 198, 255, 0.5);
         }
+
+        /* Glass Cards */
+
+        .section {
+            margin-top: 90px;
+        }
+
+        .section h2 {
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 25px;
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: rotate(25deg);
+            top: -100%;
+            left: -100%;
+            transition: 0.5s;
+        }
+
+        .card:hover::before {
+            top: 100%;
+            left: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+        }
+
+        /* Skills */
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .skill {
+            padding: 10px 18px;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            background: linear-gradient(90deg, #00c6ff, #a855f7);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
 
         footer {
+            margin-top: 100px;
             text-align: center;
-            margin-top: 20px;
+            opacity: 0.6;
             font-size: 14px;
-            opacity: 0.7;
         }
 
-        @media(max-width:768px) {
-            .glass {
-                padding: 25px;
+        /* Responsive */
+
+        @media(max-width:700px) {
+
+            .hero h1 {
+                font-size: 36px;
             }
+
         }
     </style>
 </head>
 
 <body>
 
+    <div class="bg">
+        <div class="blob blob1"></div>
+        <div class="blob blob2"></div>
+        <div class="blob blob3"></div>
+    </div>
+
     <div class="container">
 
-        <div class="glass">
+        <section class="hero">
 
-            <header>
-                <h1>Aliya Firdous</h1>
-                <p>Aspiring DevOps Engineer </p>
-            </header>
+            <h1>Aliya Firdous</h1>
 
-            <div class="section">
-                <h2>About Me</h2>
+            <p>Aspiring DevOps Engineer • AWS Learner • Building My 90-Day DevOps Journey</p>
+
+            <button>View My Work</button>
+
+        </section>
+
+
+        <section class="section">
+
+            <h2>About Me</h2>
+
+            <div class="card">
+
                 <p>
-                    Passionate and growth-driven learner currently mastering DevOps, AWS, and Cloud technologies.
-                    I believe in consistency, discipline, and daily improvement.
-                    My mission is to become financially independent and make my parents proud.
-                </p>
-            </div>
-
-            <div class="section">
-                <h2>Skills & Learning</h2>
-                <div class="skills">
-                    <div class="skill-card">Linux</div>
-                    <div class="skill-card">Git & GitHub</div>
-                    <div class="skill-card">Docker</div>
-                    <div class="skill-card">AWS (Beginner)</div>
-                    <div class="skill-card">networking</div>
-                    <div class="skill-card">Python</div>
-                    <div class="skill-card">DevOps Basics</div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2>Projects</h2>
-                <div class="projects">
-                    <div class="project-card">
-                        <h3>Capstone project</h3>
-                        <p>created capstone project using FASTAPI</p>
-                    </div>
-
-                    <div class="project-card">
-                        <h3>Stack-project</h3>
-                        <p>Containerized a flask application using custom Dockerfile and multi-stage builds.</p>
-                    </div>
-
-                    <div class="project-card">
-                        <h3>Smart Quiz Game</h3>
-                        <p>Beginner-friendly Python CLI project implementing loops and conditional logic.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2>My Vision</h2>
-                <p>
-                    To become a highly skilled DevOps Engineer, build scalable cloud systems,
-                    and continuously evolve through structured learning and real-world practice.
+                    I am a passionate learner exploring the world of DevOps, cloud computing, and automation.
+                    Currently building strong fundamentals in Docker, GitHub Actions, AWS, and Linux while
+                    documenting my progress through a public DevOps journey.
+                    My goal is to become a highly skilled DevOps Engineer and create reliable cloud infrastructure.
                 </p>
 
-                <button onclick="alert('Thank you for visiting my portfolio!')">
-                    Connect With Me
-                </button>
             </div>
 
-            <footer>
-                © 2026 Aliya Firdous | Built with Passion & Discipline
-            </footer>
+        </section>
 
-        </div>
+
+        <section class="section">
+
+            <h2>Skills</h2>
+
+            <div class="skills">
+
+                <div class="skill">Linux</div>
+                <div class="skill">Git & GitHub</div>
+                <div class="skill">Docker</div>
+                <div class="skill">GitHub Actions</div>
+                <div class="skill">AWS</div>
+                <div class="skill">Networking</div>
+                <div class="skill">Python</div>
+
+
+            </div>
+
+        </section>
+
+
+        <section class="section">
+
+            <h2>Projects</h2>
+
+            <div class="grid">
+
+                <div class="card">
+                    <h3>stack-project</h3>
+                    <p>Built and containerized a Python Flask application using Docker with optimized image layers.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Capstone project</h3>
+                    <p>created using python and FASTAPI.</p>
+                </div>
+
+                <div class="card">
+                    <h3>System Health Monitor API</h3>
+                    <p></p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <footer>
+
+            © 2026 Aliya Firdous • DevOps Portfolio
+
+        </footer>
 
     </div>
 
