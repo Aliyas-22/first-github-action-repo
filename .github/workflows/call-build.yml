@@ -18,4 +18,4 @@ jobs:
 
     steps:
       - name: Print build version
-        run: echo "Build version is ${{ needs.reuseable.outputs.build_version }}"
+        run: echo "Build version is ${{ needs.reusable.outputs.build_version }}"
