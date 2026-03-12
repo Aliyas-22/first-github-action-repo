@@ -11,7 +11,7 @@ on:
         default: staging
     secrets:
         docker_token:
-        required: true
+         required: true
 jobs:
   reuseable:
     runs-on: ubuntu-latest
