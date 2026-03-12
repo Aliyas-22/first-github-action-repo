@@ -21,7 +21,8 @@ jobs:
 
      - name: Print build info
        run: echo "Building ${{ inputs.app_name }} for ${{ inputs.environment }}"
-
+     
      - name: Check Docker token
-       run: echo "Docker token is set: ${{ secrets.docker_token != '' }}"
+       run: |
+        echo "Docker token is set: ${{ secrets.DOCKER_TOKEN != '' }}"
       
