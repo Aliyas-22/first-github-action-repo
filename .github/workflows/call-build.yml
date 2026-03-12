@@ -1,7 +1,8 @@
 name: calling the workflow
+
 on:
-    push:
-        branches: [main]
+  push:
+    branches: [main]
 
 jobs:
   build:
@@ -18,4 +19,4 @@ jobs:
 
     steps:
       - name: Print build version
-        run: echo "Build version is ${{ needs.reusable.outputs.build_version }}"
+        run: echo "Build version is ${{ needs.build.outputs.build_version }}"
