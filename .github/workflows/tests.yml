@@ -9,4 +9,3 @@ jobs:
      - name: print the name of the file
        run: |
         echo "Workflow name: $GITHUB_WORKFLOW"
-eihgrhirih
