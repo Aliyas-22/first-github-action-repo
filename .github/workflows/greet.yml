@@ -1,6 +1,7 @@
 name: greet workflow
-
-on: push
+on:
+  workflow_dispatch: 
+# on: push
 
 jobs:
   greet:
