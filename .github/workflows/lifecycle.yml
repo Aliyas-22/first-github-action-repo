@@ -32,7 +32,7 @@ jobs:
           echo: " source branch: ${{ github.event.pull_request.head.ref }}"
           echo: " target branch:  ${{ github.event.pull_request.base.ref }}"
 
-      - name: condition checking for pr open
+      - name: condition checking for pr opened
         if: ${{ github.event.action == 'opened' }}
         run: echo "pr is opened"
 
