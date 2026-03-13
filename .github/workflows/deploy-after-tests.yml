@@ -1,6 +1,6 @@
 on:
   workflow_run:
-    workflows: ["Run Tests"]
+    workflows: ["simple test file"]
     types: [completed]
 jobs:
   deploy:
