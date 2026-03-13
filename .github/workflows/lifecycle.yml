@@ -26,13 +26,13 @@ jobs:
 
       - name: show pr details                                          #Add steps that:
         run: |
-          echo: " event type fired: ${{ github.event.action }}"
-          echo: " PR title: ${{ github.event.pull_request.title }} "
-          echo: " PR author: ${{ github.event.pull_request.user.login }}"
-          echo: " source branch: ${{ github.event.pull_request.head.ref }}"
-          echo: " target branch:  ${{ github.event.pull_request.base.ref }}"
+          echo " event type fired: ${{ github.event.action }}"
+          echo " PR title: ${{ github.event.pull_request.title }} "
+          echo " PR author: ${{ github.event.pull_request.user.login }}"
+          echo " source branch: ${{ github.event.pull_request.head.ref }}"
+          echo " target branch:  ${{ github.event.pull_request.base.ref }}"
 
-      - name: condition checking for pr open
+      - name: condition checking for pr opened
         if: ${{ github.event.action == 'opened' }}
         run: echo "pr is opened"
 
