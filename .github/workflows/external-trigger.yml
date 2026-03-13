@@ -1,13 +1,13 @@
-name: External Trigger Workflow
+name: External Trigger
 
 on:
   repository_dispatch:
     types: [deploy-request]
 
 jobs:
-  external-event:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-        - name: Print environment
-          run: echo "Deploying to environment: ${{ github.event.client_payload.environment || 'not provided' }}"
+      - name: Print environment
+        run: echo "Deploying to environment: ${{ github.event.client_payload.environment || 'not provided' }}"
