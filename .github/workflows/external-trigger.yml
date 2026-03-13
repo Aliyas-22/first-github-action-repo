@@ -9,5 +9,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print environment
-        run: echo "Deploying to environment: ${{ github.event.client_payload.environment || 'not provided' }}"
+        - name: Print environment
+          run: |
+           echo "Deploying to environment: ${{ github.event.client_payload.environment }}"
