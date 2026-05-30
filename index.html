@@ -1,313 +1,749 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Aliya Firdous · DevOps Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --bg:#fff8fc;
+  --white:#ffffff;
+  --black:#0f0a14;
+  --pink:#f472b6;
+  --pink2:#ec4899;
+  --pink-light:#fce7f3;
+  --pink-pale:#fff0f7;
+  --purple:#a855f7;
+  --purple-light:#d8b4fe;
+  --mint:#34d399;
+  --mint-light:#d1fae5;
+  --sky:#38bdf8;
+  --sky-light:#e0f2fe;
+  --amber:#fbbf24;
+  --amber-light:#fef3c7;
+  --coral:#fb7185;
+  --text:#0f0a14;
+  --muted:#6b7280;
+  --border:#f9a8d4;
+}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
 
-    <title>Aliya Firdous | DevOps Portfolio</title>
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 3rem;
+  background:rgba(255,248,252,0.88);
+  backdrop-filter:blur(18px);
+  border-bottom:1.5px solid var(--border);
+}
+.nav-logo{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.3rem;letter-spacing:3px;
+  background:linear-gradient(90deg,var(--pink2),var(--purple));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{
+  font-size:0.82rem;font-weight:500;letter-spacing:1px;text-transform:uppercase;
+  text-decoration:none;color:var(--muted);transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--pink2)}
+.nav-cta{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  padding:0.5rem 1.3rem;border-radius:999px;
+  background:linear-gradient(135deg,var(--pink2),var(--purple));
+  color:var(--white);font-size:0.82rem;font-weight:500;
+  text-decoration:none;transition:opacity 0.2s,transform 0.15s;
+  box-shadow:0 4px 16px #ec489950;
+}
+.nav-cta:hover{opacity:0.9;transform:translateY(-1px)}
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;
+  padding:7rem 2rem 5rem;
+  position:relative;overflow:hidden;
+  background:var(--white);
+}
+/* pastel blobs */
+.hero::before{
+  content:'';position:absolute;
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,#fce7f380 0%,transparent 65%);
+  top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;
+}
+.blob-tl{position:absolute;top:-80px;left:-80px;width:340px;height:340px;border-radius:50%;background:#fce7f3;opacity:0.5;filter:blur(50px)}
+.blob-tr{position:absolute;top:-40px;right:-60px;width:280px;height:280px;border-radius:50%;background:#ede9fe;opacity:0.5;filter:blur(50px)}
+.blob-bl{position:absolute;bottom:-60px;left:5%;width:240px;height:240px;border-radius:50%;background:#d1fae5;opacity:0.4;filter:blur(50px)}
+.blob-br{position:absolute;bottom:-40px;right:5%;width:260px;height:260px;border-radius:50%;background:#e0f2fe;opacity:0.4;filter:blur(50px)}
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
+/* the big stacked DEVOPS text */
+.hero-inner{position:relative;z-index:2;max-width:900px;width:100%;margin:0 auto}
 
-        body {
-            background: #0b0f19;
-            color: white;
-            overflow-x: hidden;
-        }
+.hero-text-stack{
+  position:relative;
+  display:inline-block;
+  margin-bottom:1.4rem;
+}
+/* row 1: DEV  row2: OPS — avatar sits between */
+.hero-row{
+  display:flex;justify-content:center;align-items:center;
+  line-height:0.82;
+  position:relative;z-index:1;
+}
+.hb{/* hero big letter */
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(5.5rem,17vw,13rem);
+  letter-spacing:6px;
+  color:var(--black);
+  display:inline-block;
+}
+.hb.stroke{
+  -webkit-text-stroke:2.5px var(--black);
+  color:transparent;
+}
+.hb.pink{color:var(--pink)}
+.hb.purple{color:var(--purple)}
+.hb.mint{color:var(--mint)}
+.hb.sky{color:var(--sky)}
+.hb.amber{color:var(--amber)}
 
-        /* Aurora Background */
+/* avatar floats between DEV and OPS rows */
+.hero-avatar-mid{
+  width:clamp(140px,18vw,210px);
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-48%);
+  z-index:3;pointer-events:none;
+}
+.hero-avatar-mid svg{width:100%;height:auto;display:block}
 
-        .bg {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
+/* coloured pill: SHAIKH ALIYA FIRDOUS */
+.name-band{
+  display:inline-flex;align-items:center;gap:0;
+  border-radius:999px;
+  overflow:hidden;
+  margin:0 auto 0.8rem;
+  border:2px solid var(--pink-light);
+}
+.name-seg{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(1rem,2.5vw,1.6rem);
+  letter-spacing:4px;
+  padding:0.3rem 1.1rem;
+  color:var(--white);
+}
+.ns1{background:var(--pink2)}
+.ns2{background:var(--purple)}
+.ns3{background:var(--mint);color:var(--black)}
 
-        .blob {
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            border-radius: 50%;
-            filter: blur(120px);
-            opacity: 0.7;
-            animation: move 18s infinite alternate ease-in-out;
-        }
+.hero-role{
+  font-size:clamp(0.78rem,1.2vw,0.95rem);
+  letter-spacing:3px;text-transform:uppercase;
+  color:var(--muted);margin-bottom:1.6rem;
+}
+.badge-row{display:flex;gap:0.55rem;flex-wrap:wrap;justify-content:center;margin-bottom:2rem}
+.badge{
+  font-size:0.72rem;font-weight:500;letter-spacing:0.3px;
+  padding:0.28rem 0.85rem;border-radius:999px;
+}
+.b-pink{background:var(--pink-light);color:#be185d;border:1px solid #fbcfe8}
+.b-purple{background:#f3e8ff;color:#7e22ce;border:1px solid #e9d5ff}
+.b-mint{background:var(--mint-light);color:#065f46;border:1px solid #a7f3d0}
+.b-sky{background:var(--sky-light);color:#075985;border:1px solid #bae6fd}
+.b-amber{background:var(--amber-light);color:#92400e;border:1px solid #fde68a}
 
-        .blob1 {
-            background: #00c6ff;
-            top: -100px;
-            left: -100px;
-        }
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-grad{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  padding:0.75rem 2rem;border-radius:999px;
+  background:linear-gradient(135deg,var(--pink2),var(--purple));
+  color:var(--white);font-size:0.9rem;font-weight:500;
+  text-decoration:none;transition:all 0.18s;
+  box-shadow:0 6px 20px #ec489940;
+}
+.btn-grad:hover{transform:translateY(-2px);box-shadow:0 10px 28px #ec489960}
+.btn-outline{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  padding:0.75rem 2rem;border-radius:999px;
+  border:1.5px solid var(--border);color:var(--text);
+  font-size:0.9rem;font-weight:400;text-decoration:none;transition:all 0.18s;
+}
+.btn-outline:hover{border-color:var(--pink2);color:var(--pink2);background:var(--pink-light)}
 
-        .blob2 {
-            background: #7b2cff;
-            bottom: -100px;
-            right: -100px;
-            animation-delay: 4s;
-        }
+/* ── SHARED ── */
+hr.div{border:none;border-top:1.5px solid #fce7f3;margin:0}
+section{padding:6rem 2rem}
+.container{max-width:960px;margin:0 auto}
+.eyebrow{display:block;font-size:0.72rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--pink2);margin-bottom:0.5rem}
+h2{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(2.5rem,6vw,4.5rem);
+  letter-spacing:3px;line-height:1;
+  color:var(--black);margin-bottom:3rem;
+}
+.h2-accent{color:var(--purple)}
+.h2-stroke{-webkit-text-stroke:1.5px var(--black);color:transparent}
 
-        .blob3 {
-            background: #ff4ecd;
-            top: 40%;
-            left: 50%;
-            animation-delay: 8s;
-        }
+/* ── ABOUT ── */
+#about{background:var(--white)}
+.about-layout{display:grid;grid-template-columns:300px 1fr;gap:4rem;align-items:start}
+@media(max-width:740px){.about-layout{grid-template-columns:1fr}}
 
-        @keyframes move {
-            0% {
-                transform: translate(0, 0) scale(1)
-            }
+.lanyard-col{display:flex;flex-direction:column;align-items:center}
+.lanyard-line{
+  width:3px;height:60px;
+  background:linear-gradient(180deg,transparent,#d8b4fe,#a855f7);
+  border-radius:999px;margin-bottom:-2px;
+}
+.lanyard-hook{
+  width:28px;height:14px;border-radius:14px 14px 0 0;
+  border:3px solid #a855f7;border-bottom:none;margin-bottom:0;
+}
+.id-card{
+  width:100%;max-width:290px;
+  background:var(--white);
+  border:2px solid var(--border);
+  border-radius:20px;overflow:hidden;
+  box-shadow:0 12px 40px #f472b620;
+}
+.id-photo{
+  width:100%;aspect-ratio:4/3;
+  background:linear-gradient(135deg,#fce7f3,#ede9fe);
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+.id-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.id-photo-hint{
+  position:absolute;bottom:0.6rem;left:50%;transform:translateX(-50%);
+  font-size:0.68rem;color:rgba(255,255,255,0.6);letter-spacing:1px;white-space:nowrap;
+  background:rgba(0,0,0,0.3);padding:0.2rem 0.6rem;border-radius:999px;
+}
+.id-body{padding:1.1rem 1.3rem}
+.id-color-bar{display:flex;height:5px;border-radius:999px;overflow:hidden;margin-bottom:1rem}
+.id-color-bar span{flex:1}
+.id-name{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:2px;color:var(--black)}
+.id-role{font-size:0.74rem;color:var(--purple);letter-spacing:1px;text-transform:uppercase;margin-bottom:0.9rem}
+.id-divider{border:none;border-top:1px solid var(--border);margin-bottom:0.9rem}
+.id-row{display:flex;justify-content:space-between;font-size:0.74rem;margin-bottom:0.45rem}
+.id-lbl{color:var(--muted)}
+.id-val{font-weight:500;color:var(--black)}
+.id-val.open{color:var(--mint)}
+.id-barcode{display:flex;gap:2px;justify-content:center;margin-top:0.9rem;opacity:0.2}
+.id-barcode span{display:inline-block;height:24px;background:var(--black);border-radius:1px}
 
-            100% {
-                transform: translate(120px, -120px) scale(1.2)
-            }
-        }
+.about-text p{font-size:0.93rem;line-height:1.85;color:var(--muted);margin-bottom:1.1rem}
+.about-text p strong{color:var(--text);font-weight:500}
 
-        /* Layout */
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.9rem;margin:2rem 0}
+.stat{
+  padding:1.1rem 1.3rem;border-radius:16px;
+  border:1.5px solid transparent;
+}
+.st1{background:var(--pink-light);border-color:#fbcfe8}
+.st2{background:#f3e8ff;border-color:#e9d5ff}
+.st3{background:var(--mint-light);border-color:#a7f3d0}
+.st4{background:var(--amber-light);border-color:#fde68a}
+.stat-n{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:1px;line-height:1}
+.sn1{color:var(--pink2)} .sn2{color:var(--purple)} .sn3{color:var(--mint)} .sn4{color:#d97706}
+.stat-l{font-size:0.73rem;color:var(--muted);margin-top:0.2rem}
 
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 60px 20px;
-        }
+/* certs */
+.cert-list{display:flex;flex-direction:column;gap:0.7rem;margin-top:2rem}
+.cert-item{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0.9rem 1.2rem;border-radius:14px;
+  background:var(--bg);border:1.5px solid var(--border);
+}
+.cert-name{font-size:0.88rem;font-weight:500;color:var(--text)}
+.cert-sub{font-size:0.74rem;color:var(--muted);margin-top:0.1rem}
+.cert-pill{
+  font-size:0.7rem;padding:0.2rem 0.7rem;border-radius:999px;
+  background:var(--pink-light);color:#be185d;border:1px solid #fbcfe8;white-space:nowrap;
+}
 
-        /* Hero */
+/* ── SKILLS ── */
+#skills{background:var(--bg)}
+/* content-box grid with colourful top borders */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem}
+.sk-card{
+  background:var(--white);border-radius:18px;
+  border:1.5px solid var(--border);
+  padding:1.4rem 1.6rem;
+  position:relative;overflow:hidden;
+  transition:transform 0.18s,box-shadow 0.18s;
+}
+.sk-card:hover{transform:translateY(-3px);box-shadow:0 10px 28px #f472b618}
+.sk-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
+.sk1::before{background:linear-gradient(90deg,var(--pink2),var(--coral))}
+.sk2::before{background:linear-gradient(90deg,var(--purple),var(--sky))}
+.sk3::before{background:linear-gradient(90deg,var(--mint),var(--sky))}
+.sk4::before{background:linear-gradient(90deg,var(--coral),var(--amber))}
+.sk5::before{background:linear-gradient(90deg,var(--amber),var(--mint))}
+.sk6::before{background:linear-gradient(90deg,var(--sky),var(--purple))}
+.sk-num{font-family:'Bebas Neue',sans-serif;font-size:0.9rem;letter-spacing:2px;color:#d1d5db;margin-bottom:0.5rem}
+.sk-name{font-family:'Space Grotesk',sans-serif;font-size:0.88rem;font-weight:600;color:var(--text);margin-bottom:0.9rem}
+.sk-tags{display:flex;flex-wrap:wrap;gap:0.35rem}
+.tg{font-size:0.7rem;padding:0.22rem 0.6rem;border-radius:999px;background:#f3f4f6;color:#374151}
 
-        .hero {
-            text-align: center;
-            margin-top: 80px;
-        }
+/* ── PROJECTS ── */
+#projects{background:var(--white)}
+.proj-big-num{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(5rem,13vw,9rem);
+  letter-spacing:4px;line-height:1;
+  color:var(--pink-light);
+  margin-bottom:-1.5rem;user-select:none;
+}
+.proj-card{
+  background:var(--white);border-radius:24px;
+  border:2px solid var(--border);
+  padding:2.2rem 2.4rem;margin-bottom:1.6rem;
+  position:relative;overflow:hidden;
+  transition:transform 0.2s,box-shadow 0.2s;
+}
+.proj-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px #f472b620}
+.proj-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
+.pc1::before{background:linear-gradient(90deg,var(--pink2),var(--purple),var(--sky))}
+.pc2::before{background:linear-gradient(90deg,var(--mint),var(--sky),var(--purple))}
+.proj-top{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:1.1rem;flex-wrap:wrap}
+.proj-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.5rem,3vw,2.2rem);letter-spacing:2px;color:var(--black);line-height:1.1}
+.proj-sub{font-size:0.78rem;color:var(--purple);letter-spacing:1px;margin-top:0.2rem}
+.proj-gh{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  padding:0.4rem 1rem;border-radius:999px;
+  border:1.5px solid var(--border);color:var(--muted);
+  font-size:0.78rem;text-decoration:none;flex-shrink:0;
+  transition:all 0.15s;
+}
+.proj-gh:hover{border-color:var(--pink2);color:var(--pink2);background:var(--pink-light)}
+.proj-desc{font-size:0.88rem;color:var(--muted);line-height:1.75;margin-bottom:1.3rem}
+.metrics-row{
+  display:flex;gap:0;flex-wrap:wrap;
+  border:1.5px solid var(--border);border-radius:14px;overflow:hidden;
+  margin-bottom:1.3rem;
+}
+.metric{
+  flex:1;min-width:80px;padding:0.9rem 0.6rem;text-align:center;
+  border-right:1px solid var(--border);
+}
+.metric:last-child{border-right:none}
+.metric-val{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;letter-spacing:1px;line-height:1}
+.mv-pink{color:var(--pink2)} .mv-purple{color:var(--purple)} .mv-mint{color:var(--mint)} .mv-sky{color:var(--sky)} .mv-amber{color:#d97706}
+.metric-label{font-size:0.65rem;color:var(--muted);letter-spacing:0.3px;margin-top:0.15rem}
+.proj-list{list-style:none;margin-bottom:1.3rem}
+.proj-list li{
+  font-size:0.85rem;color:var(--muted);line-height:1.65;
+  padding-left:1.4rem;position:relative;margin-bottom:0.4rem;
+}
+.proj-list li::before{
+  content:'';position:absolute;left:0;top:0.6rem;
+  width:7px;height:7px;border-radius:50%;background:var(--pink);
+}
+.stack-tags{display:flex;flex-wrap:wrap;gap:0.4rem}
+.stk{
+  font-size:0.7rem;padding:0.22rem 0.65rem;border-radius:5px;
+  background:#f9fafb;border:1px solid #e5e7eb;
+  color:#374151;font-family:'Space Grotesk',sans-serif;letter-spacing:0.2px;
+}
 
-        .hero h1 {
-            font-size: 56px;
-            font-weight: 700;
-            background: linear-gradient(90deg, #00c6ff, #a855f7, #ff4ecd);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+/* ── CONTACT ── */
+#contact{
+  background:linear-gradient(135deg,#fff0f7,#f5f0ff,#f0fdf4);
+  text-align:center;
+}
+.contact-inner{max-width:580px;margin:0 auto}
+.contact-big{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(3rem,9vw,6.5rem);
+  letter-spacing:4px;line-height:0.95;
+  color:var(--black);margin-bottom:0.8rem;
+}
+.contact-big .c-pink{color:var(--pink2)}
+.contact-big .c-purple{color:var(--purple)}
+.contact-desc{font-size:0.92rem;color:var(--muted);line-height:1.75;margin-bottom:2.2rem}
+.soc-grid{display:flex;flex-wrap:wrap;gap:0.7rem;justify-content:center}
+.soc{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  padding:0.65rem 1.4rem;border-radius:999px;
+  background:var(--white);border:1.5px solid var(--border);
+  color:var(--text);font-size:0.85rem;text-decoration:none;
+  transition:all 0.18s;
+}
+.soc:hover{transform:translateY(-2px);box-shadow:0 6px 18px #f472b625}
+.soc.s-pink:hover{border-color:var(--pink2);color:var(--pink2);background:var(--pink-light)}
+.soc.s-purple:hover{border-color:var(--purple);color:var(--purple);background:#f3e8ff}
+.soc.s-mint:hover{border-color:var(--mint);color:#065f46;background:var(--mint-light)}
 
-        .hero p {
-            margin-top: 15px;
-            font-size: 18px;
-            opacity: 0.8;
-        }
+/* ── FOOTER ── */
+footer{
+  text-align:center;padding:2rem;
+  font-size:0.78rem;color:var(--muted);
+  border-top:1.5px solid var(--border);
+  letter-spacing:0.5px;background:var(--white);
+}
+footer .heart{color:var(--pink2)}
 
-        .hero button {
-            margin-top: 35px;
-            padding: 14px 32px;
-            border-radius: 40px;
-            border: none;
-            background: linear-gradient(90deg, #00c6ff, #a855f7);
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.3s;
-        }
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
 
-        .hero button:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px rgba(0, 198, 255, 0.5);
-        }
-
-        /* Glass Cards */
-
-        .section {
-            margin-top: 90px;
-        }
-
-        .section h2 {
-            font-size: 28px;
-            margin-bottom: 30px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 25px;
-            backdrop-filter: blur(14px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: 0.4s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card::before {
-            content: "";
-            position: absolute;
-            width: 150%;
-            height: 150%;
-            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transform: rotate(25deg);
-            top: -100%;
-            left: -100%;
-            transition: 0.5s;
-        }
-
-        .card:hover::before {
-            top: 100%;
-            left: 100%;
-        }
-
-        .card:hover {
-            transform: translateY(-8px) scale(1.03);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
-        }
-
-        .card h3 {
-            margin-bottom: 10px;
-        }
-
-        /* Skills */
-
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .skill {
-            padding: 10px 18px;
-            border-radius: 30px;
-            background: rgba(255, 255, 255, 0.07);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: 0.3s;
-        }
-
-        .skill:hover {
-            background: linear-gradient(90deg, #00c6ff, #a855f7);
-            transform: translateY(-3px);
-        }
-
-        /* Footer */
-
-        footer {
-            margin-top: 100px;
-            text-align: center;
-            opacity: 0.6;
-            font-size: 14px;
-        }
-
-        /* Responsive */
-
-        @media(max-width:700px) {
-
-            .hero h1 {
-                font-size: 36px;
-            }
-
-        }
-    </style>
+/* ── RESPONSIVE ── */
+@media(max-width:640px){
+  nav{padding:0.8rem 1.2rem}
+  .nav-links{display:none}
+  section{padding:4rem 1.2rem}
+  .proj-card{padding:1.4rem 1.2rem}
+  .about-layout{gap:2.5rem}
+  .name-seg{font-size:0.9rem;padding:0.25rem 0.75rem;letter-spacing:2px}
+}
+</style>
 </head>
-
 <body>
 
-    <div class="bg">
-        <div class="blob blob1"></div>
-        <div class="blob blob2"></div>
-        <div class="blob blob3"></div>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">ALIYA.DEV ✦</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Stack</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:itz.aliya22@gmail.com" class="nav-cta">Hire Me ✦</a>
+</nav>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="hero">
+  <div class="blob-tl"></div>
+  <div class="blob-tr"></div>
+  <div class="blob-bl"></div>
+  <div class="blob-br"></div>
+
+  <div class="hero-inner">
+
+    <!-- big broken word with avatar floating between rows -->
+    <div class="hero-text-stack">
+      <!-- row 1 -->
+      <div class="hero-row">
+        <span class="hb pink">D</span>
+        <span class="hb stroke">E</span>
+        <span class="hb purple">V</span>
+      </div>
+
+      <!-- avatar floats between rows -->
+      <div class="hero-avatar-mid">
+        <svg viewBox="0 0 200 265" xmlns="http://www.w3.org/2000/svg" fill="none">
+          <!-- shadow -->
+          <ellipse cx="100" cy="252" rx="52" ry="10" fill="#f472b6" opacity="0.3"/>
+          <!-- body -->
+          <rect x="54" y="180" width="92" height="82" rx="22" fill="#fce7f3"/>
+          <rect x="70" y="180" width="60" height="68" rx="16" fill="#fbcfe8"/>
+          <!-- v-collar -->
+          <path d="M90 180 Q100 196 110 180" stroke="#f472b6" stroke-width="2" stroke-linecap="round"/>
+          <!-- hijab body -->
+          <ellipse cx="100" cy="128" rx="54" ry="60" fill="#a855f7"/>
+          <!-- hijab shadow -->
+          <path d="M52 148 Q70 178 100 182 Q130 178 148 148" fill="#9333ea"/>
+          <!-- face -->
+          <ellipse cx="100" cy="116" rx="36" ry="38" fill="#fde8ce"/>
+          <!-- hijab cap -->
+          <path d="M64 116 Q66 70 100 66 Q134 70 136 116" fill="#c084fc"/>
+          <!-- ears -->
+          <ellipse cx="64" cy="118" rx="5" ry="6" fill="#fde8ce"/>
+          <ellipse cx="136" cy="118" rx="5" ry="6" fill="#fde8ce"/>
+          <!-- earring drop -->
+          <circle cx="64" cy="125" r="3" fill="#f472b6"/>
+          <circle cx="136" cy="125" r="3" fill="#f472b6"/>
+          <!-- eyes -->
+          <ellipse cx="88" cy="114" rx="5" ry="5.5" fill="#1a1028"/>
+          <ellipse cx="112" cy="114" rx="5" ry="5.5" fill="#1a1028"/>
+          <circle cx="89.5" cy="112" r="1.8" fill="white"/>
+          <circle cx="113.5" cy="112" r="1.8" fill="white"/>
+          <!-- lashes -->
+          <path d="M83 109 Q86 107 89 108" stroke="#1a1028" stroke-width="1.3" stroke-linecap="round"/>
+          <path d="M107 108 Q110 107 113 109" stroke="#1a1028" stroke-width="1.3" stroke-linecap="round"/>
+          <!-- brows -->
+          <path d="M81 106 Q88 103 94 105" stroke="#7c3b1a" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M106 105 Q112 103 119 106" stroke="#7c3b1a" stroke-width="1.8" stroke-linecap="round"/>
+          <!-- nose -->
+          <path d="M97 121 Q100 125 103 121" stroke="#d4a87a" stroke-width="1.2" stroke-linecap="round"/>
+          <!-- smile -->
+          <path d="M91 130 Q100 138 109 130" stroke="#c97b5a" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          <!-- blush -->
+          <ellipse cx="80" cy="125" rx="6.5" ry="3.5" fill="#f9a8d4" opacity="0.45"/>
+          <ellipse cx="120" cy="125" rx="6.5" ry="3.5" fill="#f9a8d4" opacity="0.45"/>
+          <!-- laptop -->
+          <rect x="60" y="212" width="80" height="46" rx="7" fill="#1e1b4b"/>
+          <rect x="64" y="216" width="72" height="36" rx="4" fill="#0f0e2a"/>
+          <rect x="66" y="218" width="68" height="32" rx="3" fill="#7c3aed" opacity="0.12"/>
+          <!-- screen code lines -->
+          <rect x="70" y="223" width="28" height="2.5" rx="1" fill="#f472b6" opacity="0.8"/>
+          <rect x="70" y="228" width="44" height="2.5" rx="1" fill="#a855f7" opacity="0.7"/>
+          <rect x="70" y="233" width="36" height="2.5" rx="1" fill="#38bdf8" opacity="0.6"/>
+          <rect x="70" y="238" width="20" height="2.5" rx="1" fill="#34d399" opacity="0.7"/>
+          <!-- base -->
+          <rect x="57" y="255" width="86" height="5" rx="2.5" fill="#312e81"/>
+          <!-- floating deco -->
+          <text x="155" y="75" font-size="14" fill="#f472b6" opacity="0.7">✦</text>
+          <text x="26" y="85" font-size="10" fill="#a855f7" opacity="0.6">◆</text>
+          <text x="152" y="188" font-size="9" fill="#34d399" opacity="0.5">✦</text>
+          <text x="30" y="180" font-size="8" fill="#fbbf24" opacity="0.5">★</text>
+        </svg>
+      </div>
+
+      <!-- row 2 -->
+      <div class="hero-row">
+        <span class="hb mint" style="font-size:clamp(4.8rem,15vw,11rem);">⚙️</span>
+        <span class="hb stroke">P</span>
+        <span class="hb sky">S</span>
+      </div>
     </div>
 
-    <div class="container">
-
-        <section class="hero">
-
-            <h1>Aliya Firdous</h1>
-
-            <p>Aspiring DevOps Engineer • AWS Learner • Building My 90-Day DevOps Journey</p>
-
-            <button>View My Work</button>
-
-        </section>
-
-
-        <section class="section">
-
-            <h2>About Me</h2>
-
-            <div class="card">
-
-                <p>
-                    I am a passionate learner exploring the world of DevOps, cloud computing, and automation.
-                    Currently building strong fundamentals in Docker, GitHub Actions, AWS, and Linux while
-                    documenting my progress through a public DevOps journey.
-                    My goal is to become a highly skilled DevOps Engineer and create reliable cloud infrastructure.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <section class="section">
-
-            <h2>Skills</h2>
-
-            <div class="skills">
-
-                <div class="skill">Linux</div>
-                <div class="skill">Git & GitHub</div>
-                <div class="skill">Docker</div>
-                <div class="skill">GitHub Actions</div>
-                <div class="skill">AWS</div>
-                <div class="skill">Networking</div>
-                <div class="skill">Python</div>
-
-
-            </div>
-
-        </section>
-
-
-        <section class="section">
-
-            <h2>Projects</h2>
-
-            <div class="grid">
-
-                <div class="card">
-                    <h3>stack-project</h3>
-                    <p>Built and containerized a Python Flask application using Docker with optimized image layers.</p>
-                </div>
-
-                <div class="card">
-                    <h3>Capstone project</h3>
-                    <p>created using python and FASTAPI.</p>
-                </div>
-
-                <div class="card">
-                    <h3>System Health Monitor API</h3>
-                    <p></p>
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <footer>
-
-            © 2026 Aliya Firdous • DevOps Portfolio
-
-        </footer>
-
+    <!-- NAME as a colourful segmented pill -->
+    <div style="display:flex;justify-content:center;margin-bottom:0.9rem">
+      <div class="name-band">
+        <span class="name-seg ns1">SHAIKH</span>
+        <span class="name-seg ns2">ALIYA</span>
+        <span class="name-seg ns3">FIRDOUS</span>
+      </div>
     </div>
 
+    <p class="hero-role">Aspiring DevOps Engineer · Cloud &amp; Automation Enthusiast</p>
+
+    <div class="badge-row">
+      <span class="badge b-pink">☁️ AWS + Terraform</span>
+      <span class="badge b-purple">🐳 Kubernetes</span>
+      <span class="badge b-mint">🔒 DevSecOps</span>
+      <span class="badge b-sky">⚡ GitHub Actions</span>
+      <span class="badge b-amber">🚀 ArgoCD</span>
+    </div>
+
+    <div class="hero-btns">
+      <a href="#projects" class="btn-grad">View Projects ↓</a>
+      <a href="mailto:itz.aliya22@gmail.com" class="btn-outline">Say Hello ✉</a>
+    </div>
+  </div>
+</section>
+
+<hr class="div"/>
+
+<!-- ═══════ ABOUT ═══════ -->
+<section id="about">
+  <div class="container">
+    <span class="eyebrow">a lil about me</span>
+    <h2>THE GIRL BEHIND <span class="h2-accent">THE CODE</span></h2>
+    <div class="about-layout">
+
+      <!-- LANYARD + ID CARD -->
+      <div class="lanyard-col reveal">
+        <div class="lanyard-line"></div>
+        <div class="lanyard-hook"></div>
+        <div class="id-card">
+          <!-- PHOTO — replace img src with your GitHub raw photo URL -->
+          <div class="id-photo">
+            <!-- illustrated placeholder -->
+            <svg viewBox="0 0 290 218" width="290" height="218" xmlns="http://www.w3.org/2000/svg" fill="none">
+              <rect width="290" height="218" fill="url(#pg)"/>
+              <defs>
+                <linearGradient id="pg" x1="0" y1="0" x2="290" y2="218" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#fce7f3"/>
+                  <stop offset="50%" stop-color="#ede9fe"/>
+                  <stop offset="100%" stop-color="#d1fae5"/>
+                </linearGradient>
+              </defs>
+              <!-- figure -->
+              <ellipse cx="145" cy="205" rx="70" ry="12" fill="#f472b6" opacity="0.2"/>
+              <rect x="105" y="155" width="80" height="65" rx="18" fill="#fce7f3"/>
+              <rect x="118" y="155" width="54" height="55" rx="12" fill="#fbcfe8"/>
+              <path d="M132 155 Q145 167 158 155" stroke="#f472b6" stroke-width="1.5" stroke-linecap="round"/>
+              <ellipse cx="145" cy="110" rx="44" ry="48" fill="#a855f7"/>
+              <path d="M108 128 Q122 162 145 166 Q168 162 182 128" fill="#9333ea"/>
+              <ellipse cx="145" cy="100" rx="32" ry="34" fill="#fde8ce"/>
+              <path d="M113 100 Q115 62 145 58 Q175 62 177 100" fill="#c084fc"/>
+              <ellipse cx="113" cy="102" rx="4" ry="5" fill="#fde8ce"/>
+              <ellipse cx="177" cy="102" rx="4" ry="5" fill="#fde8ce"/>
+              <circle cx="113" cy="108" r="2.5" fill="#f472b6"/>
+              <circle cx="177" cy="108" r="2.5" fill="#f472b6"/>
+              <ellipse cx="134" cy="98" rx="4.5" ry="5" fill="#1a1028"/>
+              <ellipse cx="156" cy="98" rx="4.5" ry="5" fill="#1a1028"/>
+              <circle cx="135.5" cy="96" r="1.5" fill="white"/>
+              <circle cx="157.5" cy="96" r="1.5" fill="white"/>
+              <path d="M136 112 Q145 118 154 112" stroke="#c97b5a" stroke-width="1.5" stroke-linecap="round"/>
+              <ellipse cx="124" cy="108" rx="5.5" ry="3" fill="#f9a8d4" opacity="0.5"/>
+              <ellipse cx="166" cy="108" rx="5.5" ry="3" fill="#f9a8d4" opacity="0.5"/>
+              <!-- deco code text -->
+              <text x="14" y="24" font-size="9" fill="#a855f7" opacity="0.45" font-family="monospace">$ kubectl apply -f .</text>
+              <text x="14" y="195" font-size="8" fill="#ec4899" opacity="0.4" font-family="monospace">terraform apply ✓</text>
+              <text x="195" y="195" font-size="8" fill="#34d399" opacity="0.4" font-family="monospace">EKS ✦</text>
+            </svg>
+            <img src="profile.jpg" alt="Aliya Firdous">
+          </div>
+
+          <div class="id-body">
+            <div class="id-color-bar">
+              <span style="background:var(--pink2)"></span>
+              <span style="background:var(--purple)"></span>
+              <span style="background:var(--mint)"></span>
+              <span style="background:var(--sky)"></span>
+              <span style="background:var(--amber)"></span>
+            </div>
+            <div class="id-name">ALIYA FIRDOUS</div>
+            <div class="id-role">DevOps Engineer · Cloud Enthusiast</div>
+            <hr class="id-divider"/>
+            <div class="id-row"><span class="id-lbl">Location</span><span class="id-val">Beed, Maharashtra</span></div>
+            <div class="id-row"><span class="id-lbl">Education</span><span class="id-val">BCS · 2023–2026</span></div>
+            <div class="id-row"><span class="id-lbl">Status</span><span class="id-val open">● Open to Work</span></div>
+            <div class="id-row"><span class="id-lbl">Email</span><span class="id-val" style="font-size:0.68rem">itz.aliya22@gmail.com</span></div>
+            <div class="id-barcode" id="bc"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TEXT -->
+      <div class="about-text reveal">
+        <p>Hey! I'm <strong>Aliya</strong> — a Computer Science student from Beed, Maharashtra and a self-driven DevOps engineer who independently designs, builds, and ships <strong>production-grade infrastructure from scratch.</strong></p>
+        <p>I've reduced manual deployment effort by an estimated <strong>80%</strong> through GitOps and DevSecOps automation. Proficient in <strong>AWS, Terraform, Docker, Kubernetes</strong> and <strong>GitHub Actions</strong> with a track record of shipping secure, scalable infrastructure.</p>
+        <p>Passionate about bridging the gap between development and operations — one pipeline at a time 🚀</p>
+
+        <div class="stats-grid">
+          <div class="stat st1"><div class="stat-n sn1">80%</div><div class="stat-l">Manual deployment reduced</div></div>
+          <div class="stat st2"><div class="stat-n sn2">90%</div><div class="stat-l">Faster commit-to-live</div></div>
+          <div class="stat st3"><div class="stat-n sn3">2</div><div class="stat-l">Production projects shipped</div></div>
+          <div class="stat st4"><div class="stat-n sn4">15m</div><div class="stat-l">EKS provisioned via Terraform</div></div>
+        </div>
+
+        <div class="cert-list">
+          <div class="cert-item">
+            <div><div class="cert-name">DevOps Course Completion</div><div class="cert-sub">TrainWithShubham</div></div>
+            <span class="cert-pill">2026</span>
+          </div>
+          <div class="cert-item">
+            <div><div class="cert-name">Bachelor of Computer Science</div><div class="cert-sub">Dr. Babasaheb Ambedkar Marathwada University</div></div>
+            <span class="cert-pill">2026</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div"/>
+
+<!-- ═══════ SKILLS ═══════ -->
+<section id="skills">
+  <div class="container">
+    <span class="eyebrow">what I work with</span>
+    <h2>TECH <span class="h2-accent">STACK</span> <span class="h2-stroke">✦</span></h2>
+    <div class="skills-grid reveal">
+      <div class="sk-card sk1"><div class="sk-num">01</div><div class="sk-name">Cloud & Infrastructure</div><div class="sk-tags"><span class="tg">AWS EC2</span><span class="tg">S3</span><span class="tg">IAM</span><span class="tg">EKS</span><span class="tg">Terraform</span></div></div>
+      <div class="sk-card sk2"><div class="sk-num">02</div><div class="sk-name">CI/CD & GitOps</div><div class="sk-tags"><span class="tg">GitHub Actions</span><span class="tg">ArgoCD</span><span class="tg">DevSecOps</span><span class="tg">GitOps</span></div></div>
+      <div class="sk-card sk3"><div class="sk-num">03</div><div class="sk-name">Containers & Orchestration</div><div class="sk-tags"><span class="tg">Docker</span><span class="tg">DockerHub</span><span class="tg">Kubernetes</span><span class="tg">Minikube</span></div></div>
+      <div class="sk-card sk4"><div class="sk-num">04</div><div class="sk-name">Security</div><div class="sk-tags"><span class="tg">Trivy</span><span class="tg">Gitleaks</span><span class="tg">Hadolint</span></div></div>
+      <div class="sk-card sk5"><div class="sk-num">05</div><div class="sk-name">Monitoring</div><div class="sk-tags"><span class="tg">Prometheus</span><span class="tg">Grafana</span></div></div>
+      <div class="sk-card sk6"><div class="sk-num">06</div><div class="sk-name">Scripting & OS</div><div class="sk-tags"><span class="tg">Bash</span><span class="tg">Python</span><span class="tg">YAML</span><span class="tg">Linux</span><span class="tg">Git</span></div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="div"/>
+
+<!-- ═══════ PROJECTS ═══════ -->
+<section id="projects">
+  <div class="container">
+    <span class="eyebrow">things I've built</span>
+    <h2>PROJECTS <span class="h2-accent">✦</span></h2>
+
+    <div class="proj-big-num">01</div>
+    <div class="proj-card pc1 reveal">
+      <div class="proj-top">
+        <div>
+          <div class="proj-title">NOVACHAT</div>
+          <div class="proj-sub">Full Stack Chat App · DevSecOps Pipeline · AWS EKS</div>
+        </div>
+        <a href="https://github.com/aliya-firdous" target="_blank" rel="noopener" class="proj-gh">GitHub ↗</a>
+      </div>
+      <p class="proj-desc">Production-grade full-stack real-time chat app across 5+ microservices with JWT auth and Socket.io messaging — automated from commit to live via a 4-stage DevSecOps pipeline.</p>
+      <div class="metrics-row">
+        <div class="metric"><div class="metric-val mv-pink">90%</div><div class="metric-label">Faster deploys</div></div>
+        <div class="metric"><div class="metric-val mv-purple">70%</div><div class="metric-label">Fewer prod bugs</div></div>
+        <div class="metric"><div class="metric-val mv-mint">15m</div><div class="metric-label">EKS provisioned</div></div>
+        <div class="metric"><div class="metric-val mv-sky">4</div><div class="metric-label">Pipeline stages</div></div>
+      </div>
+      <ul class="proj-list">
+        <li>Built a 4-stage CI/CD pipeline (lint → scan → build → deploy) using GitHub Actions, automating security checks that previously needed 100% manual review</li>
+        <li>Deployed across 2 Kubernetes environments — Minikube locally and AWS EKS for production — maintaining environment parity and reducing production-specific bugs by ~70%</li>
+        <li>Provisioned EKS infrastructure with Terraform in under 15 minutes; managed cluster state via GitOps with ArgoCD</li>
+        <li>Integrated Trivy for container vuln scanning, Gitleaks for secret detection, and Hadolint for Dockerfile linting</li>
+      </ul>
+      <div class="stack-tags"><span class="stk">React.js</span><span class="stk">Node.js</span><span class="stk">MongoDB</span><span class="stk">Socket.io</span><span class="stk">JWT</span><span class="stk">Docker</span><span class="stk">Kubernetes</span><span class="stk">AWS EKS</span><span class="stk">Terraform</span><span class="stk">GitHub Actions</span><span class="stk">ArgoCD</span><span class="stk">Trivy</span><span class="stk">Gitleaks</span><span class="stk">Nginx</span></div>
+    </div>
+
+    <div class="proj-big-num">02</div>
+    <div class="proj-card pc2 reveal">
+      <div class="proj-top">
+        <div>
+          <div class="proj-title">PDF TO AUDIOBOOK</div>
+          <div class="proj-sub">Containerised · Kubernetes · Accessibility</div>
+        </div>
+        <a href="https://github.com/aliya-firdous" target="_blank" rel="noopener" class="proj-gh">GitHub ↗</a>
+      </div>
+      <p class="proj-desc">Accessibility-focused app that transforms PDF text into audio for hands-free learning — Dockerised, published to DockerHub, and deployed on Kubernetes with zero-downtime rolling updates.</p>
+      <div class="metrics-row">
+        <div class="metric"><div class="metric-val mv-mint">2m</div><div class="metric-label">Setup (was 30m)</div></div>
+        <div class="metric"><div class="metric-val mv-purple">0</div><div class="metric-label">Downtime on update</div></div>
+        <div class="metric"><div class="metric-val mv-sky">∞</div><div class="metric-label">Horizontal scale</div></div>
+      </div>
+      <ul class="proj-list">
+        <li>Containerised with Docker and published versioned images to DockerHub, cutting environment setup from 30 minutes to under 2 minutes</li>
+        <li>Deployed on Kubernetes using Deployment & Service manifests enabling horizontal scaling across multiple replicas</li>
+        <li>Implemented automated deployment workflow for full lifecycle management in containerised environments</li>
+      </ul>
+      <div class="stack-tags"><span class="stk">Docker</span><span class="stk">DockerHub</span><span class="stk">Kubernetes</span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="div"/>
+
+<!-- ═══════ CONTACT ═══════ -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <span class="eyebrow">get in touch</span>
+      <div class="contact-big">LET'S<br/><span class="c-pink">CON</span><span class="c-purple">NECT</span></div>
+      <p class="contact-desc">Open to DevOps roles, internships, and collaborations.<br/>I don't bite — reach out anytime! 🌸</p>
+      <div class="soc-grid">
+        <a href="mailto:itz.aliya22@gmail.com" class="soc s-pink">✉ Email me</a>
+        <a href="https://linkedin.com/in/aliya-firdous" target="_blank" rel="noopener" class="soc s-purple">💼 LinkedIn</a>
+        <a href="https://github.com/aliya-firdous" target="_blank" rel="noopener" class="soc s-mint">🐙 GitHub</a>
+        <a href="tel:+918830596565" class="soc s-pink">📱 +91 88305 96565</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Built with <span class="heart">♥</span> by Aliya Firdous · © 2026 · Beed, Maharashtra
+</footer>
+
+<script>
+const bc=document.getElementById('bc');
+if(bc){[3,2,4,2,3,5,2,3,4,2,3,2,4,3,2,5,2,4,2,3].forEach(w=>{const s=document.createElement('span');s.style.width=w+'px';bc.appendChild(s)})}
+const obs=new IntersectionObserver(es=>{es.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('in'),i*100)})},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
 </body>
-
 </html>
